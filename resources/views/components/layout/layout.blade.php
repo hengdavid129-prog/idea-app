@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Idea</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @vite(['resources/js/app.js'])
     @vite(['resources/css/app.css'])
 </head>
 <body class="bg-background text-foreground">
@@ -13,5 +15,24 @@
     <main class="max-w-7xl mx-auto px-6">
         {{ $slot }}
     </main>
+
+    <div x-data="{ show: true }">
+        <p x-show="show">You can see me.</p>
+
+        <button @click="show = false">Toggle</button>
+    </div>
+
+
+    @session('success')
+        <div
+            x-data="{ show: true}"
+            x-init="setTimeout(() => show = false, 3000)"
+            x-show="show"
+            x-transition.opacity.duration.300ms
+            class="bg-primary px-4  py-3 absolute bottom-4 right-4 rounded-lg"
+        >
+            {{ $value }}
+        </div>
+    @endsession
 </body>
 </html>

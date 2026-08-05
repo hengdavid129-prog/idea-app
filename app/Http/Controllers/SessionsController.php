@@ -36,6 +36,9 @@ class SessionsController extends Controller
     {
         Auth::logout();
 
+        $request->session()->regenerate();
+        $request->session()->regenerateToken();
+
         return redirect('/');
     }
 }
