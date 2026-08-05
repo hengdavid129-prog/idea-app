@@ -15,7 +15,7 @@
             @auth
                 <form action="/logout" method="post">
                     @csrf
-                    <button type="submit" >Logout</button>
+                    <button type="submit" >Log Out</button>
                 </form>
             @endauth
             @guest
