@@ -14,6 +14,6 @@ it('registers a user', function () {
 
     expect(Auth::user())->toMatchArray([
         'name' => 'Jonh Doe',
-        'email' => 'jonh@example.com'
+        'email' => 'jonh@example.com',
     ]);
 });
