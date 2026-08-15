@@ -14,6 +14,10 @@ it('creates a new idea', function () {
         ->click('@submit-new-link-button')
         ->fill('@new-link', 'https://laravel.com')
         ->click('@submit-new-link-button')
+        ->fill('@new-step', 'Do a thing')
+        ->click('@submit-new-step-button')
+        ->fill('@new-step', 'Do another thing')
+        ->click('@submit-new-step-button')
         ->click('Create')
         ->assertPathIs('/ideas');
 
@@ -23,4 +27,7 @@ it('creates a new idea', function () {
         'description' => 'An example description',
         'links' => ['https://laracast.com', 'https://laravel.com'],
     ]);
+
+    $idea = $user->ideas()->first();
+    expect($idea->steps)->toHaveCount(2);
 });
