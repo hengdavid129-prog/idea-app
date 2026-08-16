@@ -32,13 +32,3 @@ it('creates a new idea', function () {
     $idea = $user->ideas()->first();
     expect($idea->steps)->toHaveCount(2);
 });
-
-it('edits an existing new idea', function () {
-    $this->actingAs($user = User::factory()->create());
-
-    $idea = Idea::factory()->for($user)->create();
-
-    visit(route('idea.show', $idea))
-        ->click(('@edit-idea-button'))
-        ->debug();
-});
